@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './List.css'
+import {Card, ListGroup, ListGroupItem, Badge, FormControl} from 'react-bootstrap';
+
+
 
 class List extends Component
 {
-
     static propTypes = {
-        contacts: PropTypes.array.isRequired,
+        contacts: PropTypes.array.isRequired 
     };
 
     state = {
@@ -28,32 +29,28 @@ class List extends Component
                 ) !== -1
             }
         );
-
         return (
-            <div className={"listArea"}>
-                <input type="text" 
-                id={"list-filter"} 
-                name={"list-filter"} 
-                value={this.state.filterText} 
-                onChange={this.onChangeFilterText} 
-                placeholder={"filter by name or phone"}/>
-                <ul className={"list"}>
-                    {
-                        filteredContacts.map( contacts =>
-                            <li key={contacts.number}>
-                                <span className={"name"}>{ contacts.name }</span>
-                                <span className={"number"}>{ contacts.number }</span>
-                                <span className={"clearfix"}></span>
-                            </li>
-                        )
-                    }
+            <div>
+                <Card style={{margin:'15px', border:'none'}}>
+                    <FormControl as="input" placeholder="Filtered.."
+                    name={"list-filter"} value={this.state.filterText}
+                    onChange={this.onChangeFilterText}>
+                    </FormControl>
+                </Card> 
 
-                </ul>
-                    
+                <Card style={{margin:'15px', border:'none'}}>
+                    <ListGroup as="ul">{
+                        filteredContacts.map( contacts =>
+                        <ListGroupItem as="li" key={contacts.number}>
+                            <Badge>{ contacts.name }</Badge>
+                            <Badge variant="dark" className ={'font-size:15px, float-right'}>{ contacts.number }</Badge>                          
+                        </ListGroupItem>
+                        )}                    
+                    </ListGroup>
+                </Card>                    
             </div>
         );
     }
 }
-
 
 export default List;
