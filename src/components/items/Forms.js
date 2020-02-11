@@ -45,12 +45,12 @@ class Forms extends Component
             <div>
                 <Card style={{margin:'15px', border:'none'}}>
                     <Form onSubmit={ this.onSubmit }>
-                        <FormGroup controlId="formBasicEmail">
+                        <FormGroup controlId="formBasicNameSurname">
                             <FormLabel>Name Surname</FormLabel>
                             <FormControl type="text" placeholder="Enter Name Surname"
                             name="name" value={this.state.name} onChange={this.onChange}/>
                         </FormGroup>
-                        <FormGroup controlId="formBasicEmail">
+                        <FormGroup controlId="formBasicPhone">
                             <FormLabel>Phone Number</FormLabel>
                             <FormControl type="text" placeholder="Enter Number" 
                             name="number" value={this.state.number} onChange={this.onChange}/>
